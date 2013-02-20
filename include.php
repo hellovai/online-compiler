@@ -12,8 +12,8 @@ function get_code($str){
 			return 0;
 		case "cpp":
 			return 1;
-		case "java":
-			return 2;
+#		case "java":
+#			return 2;
 		case "asm":
 			return 3;
 		default:
@@ -63,6 +63,10 @@ function get_page($page, $args = array()) {
 	include("header.php");
 	include($page_include);
 	include("footer.php");
+}
+
+function base_url() {
+	return "http://localhost/sample";
 }
 
 

@@ -1,14 +1,24 @@
-<?include('header.php');?>
-<?php
+<? include('include.php');
+	
 	if(isset($_POST['compileType']) && isset($_POST['codeIn'])){
-		$compileType = $_POST['compileType'];
+		$compileType = get_code($_POST['compileType']);
 		$codeIn = $_POST['codeIn'];
+		do {
+			$outDir = uid(16);
+		} while(file_exists(basePath() . "/data/" . $outDir));
+			mkdir("./data/" . $outDir . "/");
+		$fout = fopen("./data/" . $outDir . "/" . $outDir . ".prog", 'w');
+		fwrite($fout, $codeIn);
+		fclose($fout);
+		$var = shell_exec("./compile.sh $outDir $compileType");
+		//TODO compiling shit
+		//		generate .out file
+		if($var == 0) {
+		    header('Location: index.php/' . $outDir);
+		} else{
+			echo $var;
+		}
 	}else{
-		header('error.html');
+		header('Location: index.php');
 	}
-	echo '<p>Input:</p>';
-	echo '<textarea rows="4" cols="50" readonly>' . $codeIn . '</textarea>';
-	echo '<p>Output:</p>';
-	echo '<textarea rows="4" cols="50"></textarea><br />';
 ?>
-<?include('footer.php');?>

@@ -1,5 +1,9 @@
 <?
 
+//set this to true if you want the site on
+$PASS = FALSE;
+
+
 $languages = array("c"=>'C', 
 			"cpp" => "C++", 
 			//"java" => "Java",

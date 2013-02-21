@@ -1,5 +1,6 @@
 <? include('include.php');
 	
+if($PASS) {
 	if(isset($_POST['compileType']) && isset($_POST['codeIn'])){
 		$compileType = get_code($_POST['compileType']);
 		$codeIn = $_POST['codeIn'];
@@ -21,4 +22,7 @@
 	}else{
 		header('Location: index.php');
 	}
+} else {
+	get_page("site_down");
+}
 ?>

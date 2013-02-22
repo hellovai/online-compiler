@@ -1,5 +1,4 @@
     </div><!-- /container -->
-</div><!-- /wrap -->
      <!-- Footer
       ================================================== -->
       
@@ -16,6 +15,7 @@
         Made by <a target="_blank" href="#" onclick="pageTracker._link(this.href); return false;">Stephen Chiang & Vaibhav Gupta</a>. Sorry you can't contact us.<br/>
 	    </div><!-- /container -->
       </footer>
+</div><!-- /wrap -->
 
 
 

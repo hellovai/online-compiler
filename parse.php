@@ -5,7 +5,7 @@ if($PASS) {
 		$compileType = get_code($_POST['compileType']);
 		$codeIn = $_POST['codeIn'];
 		do {
-			$outDir = uid(16);
+			$outDir = uid($FILE_LEN);
 		} while(file_exists(basePath() . "/data/" . $outDir));
 			mkdir("./data/" . $outDir . "/");
 		$fout = fopen("./data/" . $outDir . "/" . $outDir . ".prog", 'w');

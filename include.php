@@ -2,7 +2,7 @@
 
 //set this to true if you want the site on
 $PASS = FALSE;
-
+$FILE_LEN = 6;
 
 $languages = array("c"=>'C', 
 			"cpp" => "C++", 

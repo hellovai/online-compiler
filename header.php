@@ -39,8 +39,7 @@
         height: 91%;
         /* Negative indent footer by it's height */
         margin: 0 auto -60px;
-        padding-top: 40px;
-        padding-bottom: 40px;
+        padding-top: 60px;
       }
 
       /* Set the fixed height of the footer here */

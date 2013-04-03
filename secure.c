@@ -88,8 +88,10 @@ int main(int argc, char **argv)
                                 break;
                             case 5:
                                 init_stdio = true;
+                                break;
                             case 9:
                                 if(init_stdio) stdio = true;
+                                break;
                             case 12: //is needed for file.open()
                                 filevar = true;
                                 break;

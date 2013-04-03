@@ -60,7 +60,7 @@ int main(int argc, char **argv)
         }
         else
         {
-            bool filevar = false, kill_check = false;
+            bool filevar = false, kill_check = false, init_stdio = false, stdio = false;
                 i = 0;
                 while(1)
                 {
@@ -71,16 +71,25 @@ int main(int argc, char **argv)
                         orig_eax = ptrace(PTRACE_PEEKUSER, child, 8 * ORIG_RAX, NULL);
                         if(orig_eax != 12 && orig_eax != 2)
                             filevar = false;
+                        if(orig_eax != 5 && orig_eax != 9)
+                            init_stdio = false;
+                        if(!(orig_eax < 3) && orig_eax != 9)
+                            stdio = false;
+
                         switch (orig_eax)
                         {
                             case 1: //for file open write
-                                kill_check = true;
+                                if(!stdio) kill_check = true;
                             case 0: //for file open read
                             case 2: //for file open both
-                                if(filevar)
+                                if(filevar && !stdio)
                                     kill_check = true;
                                 if(kill_check) fprintf(stderr, "Invalid System Call: FILE_ACCESS\n");
                                 break;
+                            case 5:
+                                init_stdio = true;
+                            case 9:
+                                if(init_stdio) stdio = true;
                             case 12: //is needed for file.open()
                                 filevar = true;
                                 break;
@@ -95,7 +104,7 @@ int main(int argc, char **argv)
                             if (kill_ret == -1)
                                 fprintf(stderr, "Failed to kill ---> %s\n", strerror(errno));
                         }
-                        printf("%d time, system call %ld\n", i++, orig_eax);
+                        //printf("%d time, system call %ld\n", i++, orig_eax);
                         ptrace(PTRACE_SYSCALL, child, NULL, NULL);
                 }
         }

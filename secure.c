@@ -102,7 +102,6 @@ int main(int argc, char **argv)
                                 fprintf(stderr, "Invalid System Call: SYST_CALL\n");
                                 kill_check = true;
                                 break;
-                            case 257:
                         }
                         if(kill_check) {
                             kill_ret = kill(child, SIGKILL);

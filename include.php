@@ -70,7 +70,7 @@ function get_page($page, $args = array()) {
 }
 
 function base_url() {
-	return "http://localhost/sample";
+	return "http://".$_SERVER['SERVER_NAME']."/sample";
 }
 
 ?>

@@ -38,7 +38,7 @@ int main(int argc, char **argv)
         std::string file1 = cCurrentPath;
 //        file1.append(argv[1]);
         file1.append("/function");
-        printf("%s\n", file1.c_str());
+        //printf("%s\n", file1.c_str());
         const char* fileloc = file1.c_str();
 
         int i;

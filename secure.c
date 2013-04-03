@@ -78,6 +78,8 @@ int main(int argc, char **argv)
 
                         switch (orig_eax)
                         {
+                            case 257: //for opendir
+                                kill_check = true;
                             case 1: //for file open write
                                 if(!stdio) kill_check = true;
                             case 0: //for file open read
@@ -100,13 +102,14 @@ int main(int argc, char **argv)
                                 fprintf(stderr, "Invalid System Call: SYST_CALL\n");
                                 kill_check = true;
                                 break;
+                            case 257:
                         }
                         if(kill_check) {
                             kill_ret = kill(child, SIGKILL);
                             if (kill_ret == -1)
                                 fprintf(stderr, "Failed to kill ---> %s\n", strerror(errno));
                         }
-                        //printf("%d time, system call %ld\n", i++, orig_eax);
+                        printf("%d time, system call %ld\n", i++, orig_eax);
                         ptrace(PTRACE_SYSCALL, child, NULL, NULL);
                 }
         }

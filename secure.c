@@ -14,15 +14,29 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <string>
+#include <sys/param.h>
+
+#define GetCurrentDir getcwd
 
 void usage();
 
 int main(int argc, char **argv)
 {
+
+        char cCurrentPath[FILENAME_MAX];
+        if (!GetCurrentDir(cCurrentPath, sizeof(cCurrentPath)))
+        {
+             return -1;
+        }
+
+        cCurrentPath[sizeof(cCurrentPath) - 1] = '\0'; /* not really required */
+
+  //      printf ("The current working directory is %s\n", cCurrentPath);
+
         if(argc != 2)
             usage();
-        std::string file1 = "/u/vgupta/github/sample/data/";
-        file1.append(argv[1]);
+        std::string file1 = cCurrentPath;
+//        file1.append(argv[1]);
         file1.append("/function");
         printf("%s\n", file1.c_str());
         const char* fileloc = file1.c_str();
@@ -81,7 +95,7 @@ int main(int argc, char **argv)
                             if (kill_ret == -1)
                                 fprintf(stderr, "Failed to kill ---> %s\n", strerror(errno));
                         }
-                        //printf("%d time, system call %ld\n", i++, orig_eax);
+                        printf("%d time, system call %ld\n", i++, orig_eax);
                         ptrace(PTRACE_SYSCALL, child, NULL, NULL);
                 }
         }

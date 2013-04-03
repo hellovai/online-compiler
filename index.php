@@ -42,4 +42,3 @@ if($PASS) {
 	get_page("site_down");
 }
 ?>
-

@@ -1,7 +1,7 @@
 <?
 
 //set this to true if you want the site on
-$PASS = FALSE;
+$PASS = TRUE;
 $FILE_LEN = 6;
 
 $languages = array("c"=>'C', 
@@ -73,5 +73,5 @@ function base_url() {
 	return "http://localhost/sample";
 }
 
-
 ?>
+

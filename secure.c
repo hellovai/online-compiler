@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 
   //      printf ("The current working directory is %s\n", cCurrentPath);
 
-        if(argc != 2)
+        if(argc < 2)
             usage();
         std::string file1 = cCurrentPath;
 //        file1.append(argv[1]);
@@ -108,7 +108,7 @@ int main(int argc, char **argv)
                             if (kill_ret == -1)
                                 fprintf(stderr, "Failed to kill ---> %s\n", strerror(errno));
                         }
-                        printf("%d time, system call %ld\n", i++, orig_eax);
+                        if(argc > 3) printf("%d time, system call %ld\n", i++, orig_eax);
                         ptrace(PTRACE_SYSCALL, child, NULL, NULL);
                 }
         }

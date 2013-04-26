@@ -14,7 +14,18 @@
 	?>
 	</div>
 	<div class="span9">
-	<textarea name="codeIn" rows="20" class="pull-right span12"></textarea>
+	<textarea id="codeIn" name="codeIn" rows="20" class="pull-right span12"></textarea>
 	</div>
 	<input type="submit" value="Compile" class="btn btn-primary pull-right span4">
 </form>
+<script>
+	CodeMirror.commands.autocomplete = function(cm) {
+    	CodeMirror.showHint(cm, CodeMirror.javascriptHint);
+    }
+	var editor = CodeMirror.fromTextArea(document.getElementById("codeIn"), {
+    	lineNumbers: true,
+        mode: "text/x-csrc",
+        autoCloseBrackets: true,
+        extraKeys: {"Ctrl-Space": "autocomplete"}
+      });
+</script>

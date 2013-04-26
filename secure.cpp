@@ -3,25 +3,33 @@
 #include <sys/ptrace.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <unistd.h>
-#include <errno.h>
 #include <sys/user.h>
 #include <sys/reg.h>
 #include <sys/syscall.h>
+#include <sys/param.h>
+#include <sys/stat.h>
+#include <sys/resource.h>
+#include <time.h>
+#include <unistd.h>
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>
-#include <sys/stat.h>
 #include <string>
-#include <sys/param.h>
-
 #define GetCurrentDir getcwd
+#define _GNU_SOURCE
+#define _FILE_OFFSET_BITS 64
 
 void usage();
 
 int main(int argc, char **argv)
 {
+        struct rlimit old,newa;
+        struct rlimit *newp;
+        newa.rlim_cur = 5120;
+        newa.rlim_max = 5120;
+        newp = &newa;
 
         char cCurrentPath[FILENAME_MAX];
         if (!GetCurrentDir(cCurrentPath, sizeof(cCurrentPath)))
@@ -60,6 +68,16 @@ int main(int argc, char **argv)
         }
         else
         {
+            if(prlimit(child, RLIMIT_CPU, newp, &old) == -1) {
+                fprintf(stderr, "%s\n", "Unable to set PRLIMIT");
+                kill_ret = kill(child, SIGKILL);
+                if (kill_ret == -1)
+                    fprintf(stderr, "Failed to kill ---> %s\n", strerror(errno));
+                return 1;                
+            } else {
+                prlimit(child, RLIMIT_CPU, NULL, &old);
+                fprintf(stderr, "new limt %d soft: %lld hard: %lld\n", child, (long long) old.rlim_cur, (long long) old.rlim_max);
+            }
             bool filevar = false, kill_check = false, init_stdio = false, stdio = false;
                 i = 0;
                 while(1)

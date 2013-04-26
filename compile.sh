@@ -1,12 +1,13 @@
 #!/bin/bash
-MAXMEM_MB=100
+MAXMEM_MB=10
 
 FILENAME=$1
 cd "data/$FILENAME"
 
 #set to MAXMEM_MB per process in KB. won't affect processes launched on other nodes (e.g. MPI)
-ulimit -v $(($MAXMEM_MB*1024))
-
+ulimit -v 51200
+#ulimit -t 3
+#ulimit -t -v
 BOOL=true;
 
 case "$2" in
@@ -39,7 +40,7 @@ cp $FILENAME.prog $FILEOUT
 $COMPILE $FILEOUT &> $FILENAME.comp
 if [ -f $OUT ];
 then 
-	timeout 5s ../../secure $FILENAME &> $FILENAME.out
+	timeout 5s perf stat ../../secure $FILENAME &> $FILENAME.out
 	val=$?
 	if [[ "$val" = "124" ]];
 	then

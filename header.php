@@ -11,14 +11,22 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-	<link rel="stylesheet" href="<?php echo base_url();?>/css/bootstrap.min.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="<?php echo base_url();?>/css/bootstrap-responsive.min.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="<?php echo base_url();?>/css/cosmo.min.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="<?php echo base_url();?>/css/jquery-ui-1.9.2.min.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="<?php echo base_url();?>/css/prettify/prettify.css" type="text/css" media="screen" />
-    <script src="<?php echo base_url() ?>/js/jquery-1.8.3.min.js" type="text/javascript"></script>
-    <script src="<?php echo base_url() ?>/js/jquery-ui-1.9.2.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url() ?>/css/prettify/prettify.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="<?php echo base_url();?>/css/bootstrap.min.css" type="text/css" media="screen" >
+  <link rel="stylesheet" href="<?php echo base_url();?>/css/bootstrap-responsive.min.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="<?php echo base_url();?>/css/cosmo.min.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="<?php echo base_url();?>/css/jquery-ui-1.9.2.min.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="<?php echo base_url();?>/css/prettify/prettify.css" type="text/css" media="screen" />
+  <script src="<?php echo base_url() ?>/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+  <script src="<?php echo base_url() ?>/js/jquery-ui-1.9.2.min.js" type="text/javascript"></script>
+  <script src="<?php echo base_url() ?>/css/prettify/prettify.js" type="text/javascript"></script>
+  <script src="<?php echo base_url() ?>/css/prettify/prettify.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/codemirror.css">
+    <script src="js/codemirror.js"></script>
+    <script src="mode/clike/clike.js"></script>
+    <script src="addon/edit/closebrackets.js"></script>
+    <script src="addon/hint/show-hint.js"></script>
+    <link rel="stylesheet" href="addon/hint/show-hint.css">
+    <script src="addon/hint/javascript-hint.js"></script>
 	<style type="text/css">
       body {
       }
@@ -61,6 +69,7 @@
         }
       }
 
+    .CodeMirror {border: 2px inset #dee;}
     </style>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -68,7 +77,7 @@
     <![endif]-->
 	
 </head>
-<body onload="prettyPrint()">
+<body>
 
 <div id="wrap">
 <div class="container">

@@ -20,13 +20,15 @@
   <script src="<?php echo base_url() ?>/js/jquery-ui-1.9.2.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url() ?>/css/prettify/prettify.js" type="text/javascript"></script>
   <script src="<?php echo base_url() ?>/css/prettify/prettify.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="css/codemirror.css">
-    <script src="js/codemirror.js"></script>
-    <script src="mode/clike/clike.js"></script>
-    <script src="addon/edit/closebrackets.js"></script>
-    <script src="addon/hint/show-hint.js"></script>
-    <link rel="stylesheet" href="addon/hint/show-hint.css">
-    <script src="addon/hint/javascript-hint.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url();?>/css/codemirror.css">
+    <script src="<?php echo base_url();?>/js/codemirror.js"></script>
+    <script src="<?php echo base_url();?>/mode/clike/clike.js"></script>
+    <script src="<?php echo base_url();?>/addon/edit/closebrackets.js"></script>
+    <script src="<?php echo base_url();?>/addon/runmode/runmode.js"></script>
+    <script src="<?php echo base_url();?>/addon/dialog/dialog.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url();?>/addon/dialog/dialog.css">
+    <script src="<?php echo base_url();?>/addon/search/searchcursor.js"></script>
+    <script src="<?php echo base_url();?>/addon/search/search.js"></script>
 	<style type="text/css">
       body {
       }
@@ -77,7 +79,7 @@
     <![endif]-->
 	
 </head>
-<body>
+<body onload="prettyPrint()">
 
 <div id="wrap">
 <div class="container">

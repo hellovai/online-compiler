@@ -7,7 +7,7 @@ $FILE_LEN = 6;
 $languages = array("c"=>'C', 
 			"cpp" => "C++", 
 			//"java" => "Java",
-			"asm" => "Assembly (x86)",
+			//"asm" => "Assembly (x86)",
 			);
 			
 function get_code($str){

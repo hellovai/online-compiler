@@ -4,8 +4,9 @@
 $PASS = TRUE;
 $FILE_LEN = 6;
 
-$languages = array("c"=>'C', 
-			"cpp" => "C++", 
+$languages = array(
+			array("lang"=>"c", "val"=>'C', "mime"=>'text/x-csrc'),
+			array("lang"=>"cpp", "val"=>'C++', "mime"=>'text/x-c++src'),
 			//"java" => "Java",
 			//"asm" => "Assembly (x86)",
 			);

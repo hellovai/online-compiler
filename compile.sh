@@ -40,7 +40,7 @@ cp $FILENAME.prog $FILEOUT
 $COMPILE $FILEOUT &> $FILENAME.comp
 if [ -f $OUT ];
 then 
-	timeout 5s perf stat ../../secure $FILENAME &> $FILENAME.out
+	timeout 5s ../../secure $FILENAME &> $FILENAME.out
 	val=$?
 	if [[ "$val" = "124" ]];
 	then

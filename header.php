@@ -16,11 +16,13 @@
   <link rel="stylesheet" href="<?php echo base_url();?>/css/cosmo.min.css" type="text/css" media="screen" />
   <link rel="stylesheet" href="<?php echo base_url();?>/css/jquery-ui-1.9.2.min.css" type="text/css" media="screen" />
   <link rel="stylesheet" href="<?php echo base_url();?>/css/prettify/prettify.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="<?php echo base_url();?>/css/monokai.css" type="text/css" media="screen" />
   <script src="<?php echo base_url() ?>/js/jquery-1.8.3.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url() ?>/js/jquery-ui-1.9.2.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url() ?>/css/prettify/prettify.js" type="text/javascript"></script>
   <script src="<?php echo base_url() ?>/css/prettify/prettify.js" type="text/javascript"></script>
     <link rel="stylesheet" href="<?php echo base_url();?>/css/codemirror.css">
+    <script src="<?php echo base_url();?>/js/shortcut.js"></script>
     <script src="<?php echo base_url();?>/js/codemirror.js"></script>
     <script src="<?php echo base_url();?>/mode/clike/clike.js"></script>
     <script src="<?php echo base_url();?>/addon/edit/closebrackets.js"></script>
@@ -29,6 +31,8 @@
     <link rel="stylesheet" href="<?php echo base_url();?>/addon/dialog/dialog.css">
     <script src="<?php echo base_url();?>/addon/search/searchcursor.js"></script>
     <script src="<?php echo base_url();?>/addon/search/search.js"></script>
+    <script src="<?php echo base_url();?>/addon/keymap/emacs.js"></script>
+    <script src="<?php echo base_url();?>/addon/keymap/vim.js"></script>
 	<style type="text/css">
       body {
       }
@@ -44,11 +48,11 @@
 
       /* Wrapper for page content to push down footer */
       #wrap {
-        min-height: 91%;
+        min-height: 90%;
         height: auto !important;
-        height: 91%;
+        height: 90%;
         /* Negative indent footer by it's height */
-        margin: 0 auto -60px;
+        margin: 0 auto -100px;
         padding-top: 60px;
       }
 
@@ -58,7 +62,7 @@
         height: 60px;
       }
       #footer {
-        background-color: #f5f5f5;
+        
       }
 
       /* Lastly, apply responsive CSS fixes as necessary */
@@ -72,6 +76,24 @@
       }
 
     .CodeMirror {border: 2px inset #dee;}
+    .CodeMirror-fullscreen {
+      display: block;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 9999;
+    }
+    .area{
+      position: relative;
+    }
+    .b {
+      position:absolute;
+      top:0;
+      right:0;
+      z-index:10000;
+      padding:5px;
+      background-color:#eee;
+    }
     </style>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
